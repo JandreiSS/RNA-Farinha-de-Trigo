@@ -1,0 +1,45 @@
+<img src="" align="center">
+
+Importando bibliotecas 
+
+%matplotlib inline
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+plt.style.use('ggplot')
+
+Lendo o dataset
+
+Resumo de informações (Estatística Descritiva)
+df.describe()
+
+df.dtypes -> Verifica se os dados foram lidos da forma correta
+
+Quantidade de linhas e colunas do DF
+df.shape
+
+Contagem de valores e gráfico
+df['Nome da coluna'].value_counts().plot(kind='bar', fgsize=(11,5), grid=False, rot=0, color='green', legend='false')
+plt.title('Haha')
+plt.xlabel('eixoX')
+plt.ylabel('eixoY')
+plt.show()
+
+(para fazer um gráfico de barras mesmo, escrever kind='barh')
+
+Podemos ordenar valores quando precisar, fazendo:
+ordenar_df = df[['Coluna index', 'Coluna a ser ordenada']].set_index('Coluna index').sort_values('Coluna a ser ordenada', ascending=True)
+
+Criando um heatmap (Mapa de Calor)
+crosstab_df = pd.crosstab(df['Y do heatmap'], df['X do heatmap'])
+crosstab_df.head() -> O comando crosstab cria a tabela que cruza as informações
+
+crosstab_df['Total'] = crosstab_df.sum(axis=1)
+crosstab_df.head() -> cria a coluna Total
+
+https://paulovasconcellos.com.br/como-criar-seu-primeiro-projeto-de-data-science-parte-2-de-2-cb9a2fe05eff 
+**para continuar
+
+df['Ie'] = pd.to_numeric(df['Ie'], errors='coerce')
+df['Bs'] = pd.to_numeric(df['Bs'], errors='coerce')
+df['a*'] = pd.to_numeric(df['a*'], errors='coerce')
